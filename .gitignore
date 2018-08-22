@@ -1,9 +1,9 @@
 ### Unity ###
-Library/
-Temp/
-obj/
-Build/
-Builds/
+/Library/
+/Temp/
+/obj/
+/Build/
+/Builds/
 
 # Visual Studio cache directory
 .vs/
