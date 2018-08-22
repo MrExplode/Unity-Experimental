@@ -2,8 +2,8 @@
 /Library/
 /Temp/
 /obj/
-/Build/
-/Builds/
+/Build/Mono
+/Build/WonderGame_Data
 
 # Visual Studio cache directory
 .vs/
