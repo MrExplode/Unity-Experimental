@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour {
 
-    public float Speed = 10f;
-    public float TurnSmoothing = 20f;
+    public CharacterSettings settings;
 
     private Rigidbody _rigdbody;
     private Animator _animator;
@@ -31,7 +30,7 @@ public class CharacterMove : MonoBehaviour {
     private void Move(float inputVertical, float inputHorizontal)
     {
         _movement.Set(inputVertical, 0, inputHorizontal);
-        _movement = _movement.normalized * Speed * Time.deltaTime;
+        _movement = _movement.normalized * settings.Speed * Time.deltaTime;
         _rigdbody.MovePosition(transform.position + _movement);
 
         if (Math.Abs(inputHorizontal) > TOLERANCE || Math.Abs(inputVertical) > TOLERANCE)
@@ -44,7 +43,7 @@ public class CharacterMove : MonoBehaviour {
     {
         var targetDirection = new Vector3(inputHorizontal, 0, inputVertical);
         var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-        var newRotation = Quaternion.Lerp(_rigdbody.rotation, targetRotation, Time.deltaTime * TurnSmoothing);
+        var newRotation = Quaternion.Lerp(_rigdbody.rotation, targetRotation, Time.deltaTime * settings.TurnSmoothing);
 
         _rigdbody.MoveRotation(newRotation);
     }

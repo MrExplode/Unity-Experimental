@@ -108,6 +108,7 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Project\Scritps\CameraFollow.cs" />
     <Compile Include="Assets\Project\Scritps\CharacterMove.cs" />
+    <Compile Include="Assets\Project\Scritps\CharacterSettings.cs" />
     <Compile Include="Assets\Third party\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
     <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
     <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />
@@ -416,6 +417,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{56559B00-3E6D-8B43-5EB2-F7CD7B14EDA1}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{8C86D0CC-894A-9118-56D1-785B5C12D241}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{99434314-C1F8-2479-474C-6D08A2762BCF}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

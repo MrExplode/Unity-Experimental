@@ -5067,8 +5067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749ca8763ea06014ca6293c2cea7b613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  TurnSmoothing: 20
+  settings: {fileID: 11400000, guid: 01fc4f262064cb04885218b82f9d55a1, type: 2}
 --- !u!136 &136629767859699894
 CapsuleCollider:
   m_ObjectHideFlags: 1
