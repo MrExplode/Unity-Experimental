@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 136589723231365940}
   - component: {fileID: 135482245544046670}
   - component: {fileID: 195085939339868922}
+  - component: {fileID: 114772227333809134}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -967,7 +968,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1380043082836370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 411.70303, y: 0, z: 193.09}
+  m_LocalPosition: {x: 254.8, y: 0, z: 361.4}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4485468333376286}
@@ -1255,6 +1256,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114772227333809134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380043082836370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e31c331097c98c49964dc3c3cdeaf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135482245544046670
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2199,7 +2211,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2209,5 +2221,5 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
