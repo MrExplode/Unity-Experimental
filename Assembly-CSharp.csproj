@@ -109,6 +109,8 @@
     <Compile Include="Assets\Project\Scritps\CameraFollow.cs" />
     <Compile Include="Assets\Project\Scritps\CharacterMove.cs" />
     <Compile Include="Assets\Project\Scritps\CharacterSettings.cs" />
+    <Compile Include="Assets\Project\Scritps\EnemyMove.cs" />
+    <Compile Include="Assets\Project\Scritps\Pickup.cs" />
     <Compile Include="Assets\Third party\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
     <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
     <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />

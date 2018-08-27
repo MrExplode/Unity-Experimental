@@ -24,7 +24,14 @@ public class EnemyMove : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             _animator.SetBool("Attack", true);
-            Debug.Log("DAAAAAAA");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _animator.SetBool("Attack", false);
         }
     }
 }
