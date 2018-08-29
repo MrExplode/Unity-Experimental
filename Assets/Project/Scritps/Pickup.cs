@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            other.gameObject.GetComponent<PlayerInventory>().PickupCount++;
             gameObject.SetActive(false);
         }
     }
