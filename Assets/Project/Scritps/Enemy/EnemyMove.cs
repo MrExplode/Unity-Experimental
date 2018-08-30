@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour {
 
+    public ZombieSettings settings;
+
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private Transform _player;
@@ -16,6 +18,13 @@ public class EnemyMove : MonoBehaviour {
 
     private void Update()
     {
+        if (Vector3.Distance(transform.position, _player.position) < settings.ChaseDistance)
+        {
+            _navMeshAgent.speed = settings.ChaseSpeed;
+        } else { 
+            _navMeshAgent.speed = settings.NormalSpeed;
+        }
+
         _navMeshAgent.SetDestination(_player.position);
     }
 
