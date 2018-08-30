@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class GameState : MonoBehaviour {
@@ -16,7 +17,7 @@ public class GameState : MonoBehaviour {
 
     private void Update()
     {
-        if (_pickups.Count(p => p.isActiveAndEnabled)  < WinTreshold - _playerInventory.PickupCount)
+        if (CanNotWin())
         {
             Debug.Log("Nem lehet nyerni...");
         }
@@ -25,5 +26,15 @@ public class GameState : MonoBehaviour {
         {
             Debug.Log("A játékos nyert!");
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+    public bool CanNotWin()
+    {
+        return _pickups.Count(p => p.isActiveAndEnabled) < WinTreshold - _playerInventory.PickupCount;
     }
 }
