@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class UIGameOver : MonoBehaviour {
 
+    private Animator _animator;
     private GameState _gameState;
     private RectTransform[] _children;
 
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _children = gameObject.GetComponentsInChildren<RectTransform>().Where(rt => rt.gameObject != gameObject).ToArray();
         _gameState = FindObjectOfType<GameState>();
     }
@@ -29,6 +31,8 @@ public class UIGameOver : MonoBehaviour {
                 //Game Over!
                 child.gameObject.SetActive(true);
             }
+
+            _animator.SetTrigger("GameOver");
         }
     }
 }
