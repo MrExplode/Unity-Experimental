@@ -1,27 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class EnemyMove : MonoBehaviour {
+public class EnemyMove : NetworkBehaviour {
 
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
-    private Transform _player;
+    public List<GameObject> Players = new List<GameObject>();
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
-        _navMeshAgent.SetDestination(_player.position);
+        if (isServer && Players.Count > 0)
+        {
+            var minDistance = Players.Min(p => Vector3.Distance(p.transform.position, transform.position));
+            var target = Players.FirstOrDefault(p => Vector3.Distance(p.transform.position, transform.position) == minDistance);
+            if (target != null)
+            {
+                _navMeshAgent.SetDestination(target.transform.position);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (isServer && other.CompareTag("Player"))
         {
             if (other.gameObject.GetComponent<PlayerInventory>().PickupCount > 0)
             {
@@ -33,7 +43,7 @@ public class EnemyMove : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (isServer && other.CompareTag("Player"))
         {
             _animator.SetBool("Attack", false);
         }

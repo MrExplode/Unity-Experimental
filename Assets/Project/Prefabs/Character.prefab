@@ -130,6 +130,9 @@ GameObject:
   - component: {fileID: 136629767859699894}
   - component: {fileID: 114831702632745386}
   - component: {fileID: 82761359741490816}
+  - component: {fileID: 114644332384190390}
+  - component: {fileID: 114519314033254618}
+  - component: {fileID: 114030599038634536}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -5153,6 +5156,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114030599038634536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045679897403396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 0.01
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114519314033254618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045679897403396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7fa92b01bbde8b48bda9c3ef358ca06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114558921810394150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5165,6 +5200,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 01fc4f262064cb04885218b82f9d55a1, type: 2}
+--- !u!114 &114644332384190390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045679897403396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 253
+    i1: 234
+    i2: 232
+    i3: 42
+    i4: 38
+    i5: 69
+    i6: 22
+    i7: 36
+    i8: 56
+    i9: 17
+    i10: 52
+    i11: 93
+    i12: 146
+    i13: 10
+    i14: 126
+    i15: 124
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114831702632745386
 MonoBehaviour:
   m_ObjectHideFlags: 1

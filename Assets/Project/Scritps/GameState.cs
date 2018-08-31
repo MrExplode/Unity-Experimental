@@ -1,40 +1,36 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class GameState : MonoBehaviour {
 
     public int WinTreshold = 8;
 
-    private PlayerInventory _playerInventory;
-    private Pickup[] _pickups;
-
-    private void Awake()
-    {
-        _pickups = FindObjectsOfType<Pickup>();
-        _playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
-    }
+    public List<PlayerInventory> PlayerInventories = new List<PlayerInventory>();
 
     private void Update()
     {
-        if (CanNotWin())
+        var winner = PlayerInventories.FirstOrDefault(pi => pi.PickupCount >= WinTreshold);
+        if (winner != null)
         {
-            Debug.Log("Nem lehet nyerni...");
+            //notify winner
+            winner.RpcPlayerWin();
+            //GO for the others
+            foreach (var looser in PlayerInventories)
+            {
+                if (looser != winner)
+                {
+                    looser.RpcPlayerLost();
+                }
+            }
         }
 
-        if (WinTreshold <= _playerInventory.PickupCount)
-        {
-            Debug.Log("A játékos nyert!");
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            NetworkManager.Shutdown();
             Application.Quit();
         }
-    }
-
-    public bool CanNotWin()
-    {
-        return _pickups.Count(p => p.isActiveAndEnabled) < WinTreshold - _playerInventory.PickupCount;
     }
 }

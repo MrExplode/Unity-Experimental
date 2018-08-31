@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMove : MonoBehaviour {
+public class CharacterMove : NetworkBehaviour {
 
     public CharacterSettings settings;
 
@@ -11,6 +12,10 @@ public class CharacterMove : MonoBehaviour {
     private Vector3 _movement;
 
     private const float TOLERANCE = 0.01f;
+    private int _idleNum = 2;
+
+    [SyncVar]                                                                                                                                                                                                                                                               
+    private bool _isMoving;
 
     private void Awake()
     {
@@ -21,24 +26,38 @@ public class CharacterMove : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        float inputVertical = Input.GetAxis("Vertical");
-        float inputHorizontal = Input.GetAxis("Horizontal");
+        if (isLocalPlayer)
+        {
+            float inputVertical = Input.GetAxis("Vertical");
+            float inputHorizontal = Input.GetAxis("Horizontal");
 
-        Move(inputVertical, inputHorizontal);
-        SetAnimation(inputVertical, inputHorizontal);
-        SetAudio(inputVertical, inputHorizontal);
+            CmdSetIsMoving(inputVertical, inputHorizontal);
+            Move(inputVertical, inputHorizontal);
+        }
+        SetAnimation();
+        SetAudio();
     }
 
-    private void SetAudio(float inputVertical, float inputHorizontal)
+    [Command]
+    private void CmdSetIsMoving(float inputVertical, float inputHorizontal)
     {
-        if (Math.Abs(inputHorizontal) > TOLERANCE || Math.Abs(inputVertical) > TOLERANCE)
+        _isMoving = Math.Abs(inputHorizontal) > TOLERANCE || Math.Abs(inputVertical) > TOLERANCE;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Zombie"))
         {
-            if (!_audioSource.isPlaying)
-                _audioSource.Play();
-        } else
+            //Damage!!
+            _animator.SetTrigger("Damage");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Zombie"))
         {
-            if (_audioSource.isPlaying)
-                _audioSource.Stop();
+            _animator.ResetTrigger("Damage");
         }
     }
 
@@ -48,7 +67,7 @@ public class CharacterMove : MonoBehaviour {
         _movement = _movement.normalized * settings.Speed * Time.deltaTime;
         _rigdbody.MovePosition(transform.position + _movement);
 
-        if (Math.Abs(inputHorizontal) > TOLERANCE || Math.Abs(inputVertical) > TOLERANCE)
+        if (_isMoving)
         {
             Rotate(inputHorizontal, inputVertical);
         }
@@ -63,10 +82,29 @@ public class CharacterMove : MonoBehaviour {
         _rigdbody.MoveRotation(newRotation);
     }
 
-    private void SetAnimation(float inputVertical, float inputHorizontal)
+    private void SetAnimation()
     {
-        var isRunning = Math.Abs(inputHorizontal) > TOLERANCE || Math.Abs(inputVertical) > TOLERANCE;
+        _animator.SetBool("isRunning", _isMoving);
+        if (!_isMoving)
+        {
+            _animator.SetInteger("IdleNum", _idleNum);
+        } else
+        {
+            _idleNum = new System.Random().Next(5);
+        }
+    }
 
-        _animator.SetBool("isRunning", isRunning);
+    private void SetAudio()
+    {
+        if (_isMoving)
+        {
+            if (!_audioSource.isPlaying)
+                _audioSource.Play();
+        }
+        else
+        {
+            if (_audioSource.isPlaying)
+                _audioSource.Stop();
+        }
     }
 }

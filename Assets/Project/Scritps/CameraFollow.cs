@@ -11,33 +11,28 @@ public class CameraFollow : MonoBehaviour
     public Vector3 minXAndZ;        // The minimum x and y coordinates the camera can have.
 
 
-    private Transform player;       // Reference to the player's transform.
-
-
-    void Awake()
-    {
-        // Setting up the reference.
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
+    public Transform Player;       // Reference to the player's transform
 
     bool CheckXMargin()
     {
         // Returns true if the distance between the camera and the player in the x axis is greater than the x margin.
-        return Mathf.Abs(transform.position.x - player.position.x) > xMargin;
+        return Mathf.Abs(transform.position.x - Player.position.x) > xMargin;
     }
 
 
     bool CheckZMargin()
     {
         // Returns true if the distance between the camera and the player in the y axis is greater than the y margin.
-        return Mathf.Abs(transform.position.z - player.position.z) > zMargin;
+        return Mathf.Abs(transform.position.z - Player.position.z) > zMargin;
     }
 
 
     void FixedUpdate()
     {
-        TrackPlayer();
+        if (Player != null)
+        {
+            TrackPlayer();
+        }    
     }
 
 
@@ -50,12 +45,12 @@ public class CameraFollow : MonoBehaviour
         // If the player has moved beyond the x margin...
         if (CheckXMargin())
             // ... the target x coordinate should be a Lerp between the camera's current x position and the player's current x position.
-            targetX = Mathf.Lerp(transform.position.x, player.position.x, xSmooth * Time.deltaTime);
+            targetX = Mathf.Lerp(transform.position.x, Player.position.x, xSmooth * Time.deltaTime);
 
         // If the player has moved beyond the y margin...
         if (CheckZMargin())
             // ... the target y coordinate should be a Lerp between the camera's current y position and the player's current y position.
-            targetZ = Mathf.Lerp(transform.position.z, player.position.z, zSmooth * Time.deltaTime);
+            targetZ = Mathf.Lerp(transform.position.z, Player.position.z, zSmooth * Time.deltaTime);
 
         // The target x and y coordinates should not be larger than the maximum or smaller than the minimum.
         targetX = Mathf.Clamp(targetX, minXAndZ.x, maxXAndZ.x);

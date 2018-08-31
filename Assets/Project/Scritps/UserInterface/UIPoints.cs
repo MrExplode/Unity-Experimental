@@ -4,18 +4,20 @@ using UnityEngine.UI;
 public class UIPoints : MonoBehaviour {
 
     private int _maxPickups;
-    private PlayerInventory _playerInventory;
+    public PlayerInventory playerInventory;
     private Text _text;
 
     private void Awake()
     {
-        _maxPickups = GameObject.FindObjectsOfType<Pickup>().Length;
-        _playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+        _maxPickups = FindObjectsOfType<Pickup>().Length;
         _text = GetComponent<Text>();
     }
 
     private void Update()
     {
-        _text.text = "Score: " + _playerInventory.PickupCount + " / " + _maxPickups;
+        if (playerInventory != null)
+        {
+            _text.text = "Score: " + playerInventory.PickupCount + " / " + _maxPickups;
+        }
     }
 }

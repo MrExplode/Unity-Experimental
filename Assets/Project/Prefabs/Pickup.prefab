@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 135187896801811328}
   - component: {fileID: 122715056770786484}
   - component: {fileID: 114596219172745630}
+  - component: {fileID: 114480512110395110}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Untagged
@@ -37,8 +38,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1902672288744896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 407.04, y: 3, z: 193.05}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,6 +87,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1902672288744896}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114480512110395110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1902672288744896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 233
+    i1: 232
+    i2: 171
+    i3: 120
+    i4: 64
+    i5: 176
+    i6: 169
+    i7: 20
+    i8: 58
+    i9: 192
+    i10: 37
+    i11: 63
+    i12: 169
+    i13: 230
+    i14: 108
+    i15: 146
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114596219172745630
 MonoBehaviour:
   m_ObjectHideFlags: 1
